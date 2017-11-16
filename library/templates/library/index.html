@@ -1,1 +1,37 @@
-{% extends "library/base.html" %}
+{% load static %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'library/materialize/css/materialize.min.css' %}" />
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col s12 m12">
+          <div class="card red lighten-2">
+            <div class="card-content white-text">
+              <span class="card-title">The library</span>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A fuga modi quia quos soluta vel, voluptatem. Accusantium ad eos laboriosam magni maiores provident quae quibusdam rem sed vitae. Ab, iste.</p>
+            </div>
+            <div class="card-action">
+              <a href="#" class="red-text text-lighten-5">BOOK LIST</a>
+              <a href="#" class="red-text text-lighten-5">LOGIN</a>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+
+<script type="text/javascript" src="{% static 'library/materialize/js/materialize.min.js' %}"></script>
+</body>
+</html>
+
+
+
+
+
+
