@@ -11,3 +11,9 @@ class Book(models.Model):
     isbn = models.CharField(max_length=13, null=True)
     year = models.IntegerField(null=True)
     date_added = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-date_added']
+
+    def __str__(self):
+        return self.title
