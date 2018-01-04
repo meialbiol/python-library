@@ -2,14 +2,15 @@
 
 {% block header %}
 <h3>Book list</h3>
+    <p><a class="waves-effect waves-yellow btn-flat" href="{% url 'library:new_book' %}"> + ADD NEW BOOK</a></p>
 {% endblock header %}
 {% block content %}
 
     <ul>
     {% for book in books %}
-    <li><h3><a href="#">{{ book }}</a></h3></li>
+    <li><h5><a href="#">{{ book }}</a></h5></li>
     {% empty %}
-        <li> <a class="waves-effect waves-yellow btn-flat" href="#"> + ADD NEW BOOK</a> No books have been added yet.</li>
+        <li>No books have been added yet.</li>
     {% endfor %}
 </ul>
 
