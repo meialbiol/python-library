@@ -8,7 +8,7 @@
 
     <ul>
     {% for book in books %}
-    <li><h5><a href="#">{{ book }}</a></h5></li>
+    <li><h5><a href="{% url 'library:show_book' book.id %}">{{ book }}</a></h5></li>
     {% empty %}
         <li>No books have been added yet.</li>
     {% endfor %}

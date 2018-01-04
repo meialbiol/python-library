@@ -5,7 +5,8 @@ from . import views
 urlpatterns = [
     #homepage
     url(r'^$', views.index, name='index'),
-    url(r'^book-list/$', views.book_list, name='book_list'),
+    url(r'^books/$', views.book_list, name='book_list'),
     url(r'^new_book/$', views.new_book, name='new_book'),
+    url(r'^book/(?P<book_id>\d+)/$', views.show, name='show_book'),
 ]
 

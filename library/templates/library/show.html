@@ -1,0 +1,44 @@
+{% extends "library/base.html" %}
+
+{% block header %}
+<h3> {{ book.title }}</h3>
+{% endblock header %}
+
+{% block content %}
+
+    <div class="row">
+      <div class="col s12 m6">
+        <div class="card-panel indigo lighten-5">
+            <table>
+        <tbody>
+
+        <tr>
+            <td width="30%">Autor: </td>
+            <td width="70%">{{ book.author }}</td>
+        </tr>
+        <tr>
+            <td>Descripción: </td>
+            <td>{{ book.description }}</td>
+        </tr>
+        <tr>
+            <td>Año: </td>
+            <td>{{ book.year }}</td>
+        </tr>
+        <tr>
+            <td>ISBN: </td>
+            <td>{{ book.isbn }}</td>
+        </tr>
+         <tr>
+            <td>Añadido en la biblioteca: </td>
+            <td>{{ book.date_added }}</td>
+        </tr>
+        </tbody>
+    </table>
+        </div>
+      </div>
+    </div>
+
+
+
+
+{% endblock content %}
