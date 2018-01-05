@@ -29,8 +29,23 @@ def new_book(request):
     context = {'form': form}
     return render(request, 'library/new_book.html', context)
 
+
 def show(request, book_id):
     book = Book.objects.get(id=book_id)
     context = {'book': book}
 
     return render(request,'library/show.html', context)
+
+
+def edit(request, book_id):
+    book = Book.objects.get(id=book_id)
+    if request.method != 'POST':
+        form = BookForm(instance=book)
+    else:
+        form = BookForm(instance=book, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('library:show_book', args=[book.id]))
+
+    context = {'book': book, 'form': form}
+    return render(request, 'library/edit.html', context)

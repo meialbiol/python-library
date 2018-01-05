@@ -1,0 +1,14 @@
+{% extends "library/base.html" %}
+
+{% block header %}
+<h3>Editar: {{ book.title }}</h3>
+{% endblock header %}
+
+{% block content %}
+
+<form action="{% url 'library:edit_book' book.id %}" method="post" class="form">
+    {% csrf_token %}
+    {{form.as_p}}
+        <button name="submit" class="btn btn-primary">Edit book</button>
+</form>
+{% endblock content %}

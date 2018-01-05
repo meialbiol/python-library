@@ -6,11 +6,15 @@
 {% endblock header %}
 {% block content %}
 
-    <ul>
+    <ul class="collection">
     {% for book in books %}
-    <li><h5><a href="{% url 'library:show_book' book.id %}">{{ book }}</a></h5></li>
+    <li class="collection-item" >
+        <h5>
+            <a href="{% url 'library:show_book' book.id %}" >{{ book.title }}</a>
+        </h5>
+    </li>
     {% empty %}
-        <li>No books have been added yet.</li>
+        <li class="collection-header">No books have been added yet.</li>
     {% endfor %}
 </ul>
 
