@@ -10,5 +10,6 @@
     {% csrf_token %}
     {{form.as_p}}
         <button name="submit" class="btn btn-primary">Add book</button>
+        <a href="{% url 'library:book_list' %}" class="btn btn-danger red">Cancelar</a>
 </form>
 {% endblock content %}

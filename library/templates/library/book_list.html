@@ -1,21 +1,32 @@
 {% extends "library/base.html" %}
 
-{% block header %}
-<h3>Book list</h3>
-    <p><a class="waves-effect waves-yellow btn-flat" href="{% url 'library:new_book' %}"> + ADD NEW BOOK</a></p>
-{% endblock header %}
+{#{% block header %}#}
+{#<h3>Book list</h3>#}
+{#    <p><a class="waves-effect waves-yellow btn-flat" href="{% url 'library:new_book' %}"> + ADD NEW BOOK</a></p>#}
+{#{% endblock header %}#}
 {% block content %}
 
-    <ul class="collection">
-    {% for book in books %}
-    <li class="collection-item" >
-        <h5>
-            <a href="{% url 'library:show_book' book.id %}" >{{ book.title }}</a>
-        </h5>
-    </li>
-    {% empty %}
-        <li class="collection-header">No books have been added yet.</li>
-    {% endfor %}
-</ul>
+     <div class="card red lighten-2">
+            <div class="card-content white-text">
+              <span class="card-title">The library</span>
+              <h3>Book list</h3>
+              <p><a class="waves-effect waves-white btn-flat white-text" href="{% url 'library:new_book' %}"> + ADD NEW BOOK</a></p>
+               <ul>
+                {% for book in books %}
+                <li>
+                    <h5>
+                        - <a class="white-text" href="{% url 'library:show_book' book.id %}" >{{ book.title }}</a>
+                    </h5>
+                </li>
+                {% empty %}
+                    <li >No books have been added yet.</li>
+                {% endfor %}
+            </ul>
+            </div>
+            <div class="card-action">
+              <a href="{% url 'library:index' %}" class="red-text text-lighten-5">HOME</a>
+              <a href="#" class="red-text text-lighten-5">LOGIN</a>
+            </div>
+          </div>
 
 {% endblock content %}

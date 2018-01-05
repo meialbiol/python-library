@@ -9,6 +9,7 @@
 <form action="{% url 'library:edit_book' book.id %}" method="post" class="form">
     {% csrf_token %}
     {{form.as_p}}
-        <button name="submit" class="btn btn-primary">Edit book</button>
+        <button name="submit" class="btn btn-primary">Editar libro</button>
+<a href="{% url 'library:show_book' book.id  %}" class="btn btn-danger red">Cancelar</a>
 </form>
 {% endblock content %}
