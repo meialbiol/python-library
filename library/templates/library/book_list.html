@@ -8,15 +8,16 @@
 
      <div class="card red lighten-2">
             <div class="card-content white-text">
-              <span class="card-title">The library</span>
-              <h3>Book list</h3>
+              <span class="card-title right-align">The library</span>
+              <h5>Book list</h5>
               <p><a class="waves-effect waves-white btn-flat white-text" href="{% url 'library:new_book' %}"> + ADD NEW BOOK</a></p>
                <ul>
-                {% for book in books %}
+                {% for book in my_book_list %}
                 <li>
-                    <h5>
-                        - <a class="white-text" href="{% url 'library:show_book' book.id %}" >{{ book.title }}</a>
-                    </h5>
+                    <h6>
+                        - <a class="white-text" href="{% url 'library:show_book' book.id %}" >{{ book.title }}</a> ({{book.author}})
+{#                        - <a class="white-text" href="{{ book.get_absolute_url }}" >{{ book.title }}</a> ({{book.author}})#}
+                    </h6>
                 </li>
                 {% empty %}
                     <li >No books have been added yet.</li>
