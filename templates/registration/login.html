@@ -4,43 +4,58 @@
     <div class="login-page">
     <div class="row ">
         <div class="col s12  z-depth-4 card-panel pad-30">
-        <form class="login-form">
-          <div class="row">
+        <div class="row">
             <div class="input-field col s12 center">
-              <h5 class="center login-form-text red-text text-lighten-2">The library</h5>
+              <h5 class="center login-form-text"><a class="red-text text-lighten-2" href="{% url 'library:index' %}">The library</a></h5>
+
             </div>
           </div>
+            {% if form.errors %}
+                <p>Your username and password didn't match. Please try again.</p>
+                <br>
+            {% endif %}
+            {% if next %}
+                {% if user.is_authenticated %}
+                <p>Your account doesn't have access to this page. To proceed,
+                please login with an account that has access.</p>
+                {% else %}
+                <p>Please login to see this page.</p>
+                {% endif %}
+                <br>
+            {% endif %}
+        <form method="post" action="{% url 'login' %}" class="login-form">
+            {% csrf_token %}
           <div class="row margin">
             <div class="input-field col s12">
               <i class="material-icons prefix pad-top-5">person_outline</i>
-              <input id="username" type="text">
-              <label for="username" class="center-align">Username</label>
+                {{ form.username }}
+                {{ form.username.label_tag }}
             </div>
           </div>
           <div class="row margin">
             <div class="input-field col s12">
               <i class="material-icons prefix pad-top-5">lock_outline</i>
-              <input id="password" type="password">
-              <label for="password">Password</label>
+              {{ form.password }}
+              {{ form.password.label_tag }}
             </div>
           </div>
           <div class="row">
             <div class="col s12 m12 l12 ml-2 mt-3">
               <input type="checkbox" id="remember-me">
-              <label for="remember-me">Remember me</label>
+              <label for="remember-me">¡Recuérdame!</label>
             </div>
           </div>
           <div class="row">
-            <div class="input-field col s12">
-              <a href="index.html" class="btn waves-effect waves-light col s12 red lighten-2">Login</a>
-            </div>
+              <button class="btn waves-effect waves-light col s12 red lighten-2" type="submit" >Login
+              </button>
+              <input type="hidden" name="next" value="{{ next }}" />
           </div>
           <div class="row">
             <div class="input-field col s4 m4 l6">
               <p class="margin medium-small"><a class="red-text text-lighten-2" href="page-register.html">Regístrate!</a></p>
             </div>
             <div class="input-field col s8 m8 l6">
-              <p class="margin right-align medium-small"><a class="red-text text-lighten-2" href="page-forgot-password.html">Recuperar contraseña ?</a></p>
+              <p class="margin right-align medium-small"><a class="red-text text-lighten-2" href="{% url 'password_reset' %}">Recuperar contraseña ?</a></p>
             </div>
           </div>
         </form>
@@ -48,3 +63,7 @@
     </div>
     </div>
 {% endblock %}
+
+ {% block scripts %}
+
+ {% endblock scripts %}

@@ -1,0 +1,17 @@
+{% extends "registration/base.html" %}
+
+{% block content %}
+    <div class="login-page">
+    <div class="row ">
+        <div class="col s12  z-depth-4 card-panel pad-30">
+        <div class="row">
+            <div class="input-field col s12 center">
+              <h5 class="center login-form-text"><a class="red-text text-lighten-2" href="{% url 'library:index' %}">The library</a></h5>
+            </div>
+            <div>Te has deslogeado. Vuelvete a logear para acceder</div>
+          </div>
+            <a class="btn waves-effect waves-light col s12 red lighten-2" href="{% url 'login' %}" >Login</a>
+      </div>
+    </div>
+    </div>
+{% endblock %}

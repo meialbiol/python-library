@@ -121,3 +121,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Add these new lines
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+
+# Redirect to home URL after login (Default redirects to /accounts/profile/)
+# https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Authentication
+LOGIN_REDIRECT_URL = '/'
