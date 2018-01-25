@@ -1,7 +1,96 @@
 .margin-bot-0{
-    margin-bottom: 0;
+    margin-bottom: 0!important;
 }
 
+.pad-top-5 {
+    padding-top: 5% !important;
+}
 .pad-15{
-        padding: 15px;
+        padding: 15px!important;
+}
+
+.pad-20{
+        padding: 20px!important;
+}
+
+
+.pad-30{
+        padding: 30px!important;
+}
+
+.medium-small {
+    font-size: 0.9rem !important;
+}
+
+.small {
+  font-size: 1.0rem !important;
+}
+
+.medium-small {
+  font-size: 0.9rem !important;
+}
+
+.ultra-small {
+  font-size: 0.8rem !important;
+}
+
+small {
+  font-size: 0.8rem;
+}
+
+.strong {
+  font-weight: 600;
+}
+
+
+/*OWN PAGES*/
+
+.login-page{
+    width: 350px;
+    margin: 0 auto 0;
+}
+
+/*ICONS*/
+
+[type="checkbox"]:checked+label:before {
+    border-right: 2px solid #E57373;
+    border-bottom: 2px solid #E57373;
+}
+
+input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]), input[type=email]:not(.browser-default):focus:not([readonly]), input[type=url]:not(.browser-default):focus:not([readonly]), input[type=time]:not(.browser-default):focus:not([readonly]), input[type=date]:not(.browser-default):focus:not([readonly]), input[type=datetime]:not(.browser-default):focus:not([readonly]), input[type=datetime-local]:not(.browser-default):focus:not([readonly]), input[type=tel]:not(.browser-default):focus:not([readonly]), input[type=number]:not(.browser-default):focus:not([readonly]), input[type=search]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #E57373;
+    -webkit-box-shadow: 0 1px 0 0 #E57373;
+    box-shadow: 0 1px 0 0 #E57373;
+}
+
+input:not([type]):focus:not([readonly]) + label,
+input[type=text]:not(.browser-default):focus:not([readonly]) + label,
+input[type=password]:not(.browser-default):focus:not([readonly]) + label,
+input[type=email]:not(.browser-default):focus:not([readonly]) + label,
+input[type=url]:not(.browser-default):focus:not([readonly]) + label,
+input[type=time]:not(.browser-default):focus:not([readonly]) + label,
+input[type=date]:not(.browser-default):focus:not([readonly]) + label,
+input[type=datetime]:not(.browser-default):focus:not([readonly]) + label,
+input[type=datetime-local]:not(.browser-default):focus:not([readonly]) + label,
+input[type=tel]:not(.browser-default):focus:not([readonly]) + label,
+input[type=number]:not(.browser-default):focus:not([readonly]) + label,
+input[type=search]:not(.browser-default):focus:not([readonly]) + label,
+textarea.materialize-textarea:focus:not([readonly]) + label {
+  color: #E57373!important;
+}
+
+.input-field .prefix.active {
+  color: #E57373!important;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  background-color: #E57373;
+  transform-origin: 50% 50%;
+  margin: -5px 0 0 0;
+  transition: .3s;
 }
