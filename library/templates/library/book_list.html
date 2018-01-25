@@ -9,8 +9,8 @@
      <div class="card red lighten-2">
             <div class="card-content white-text">
               <span class="card-title right-align">The library</span>
-              <h5>Book list</h5>
-              <p><a class="waves-effect waves-white btn-flat white-text" href="{% url 'library:new_book' %}"> + ADD NEW BOOK</a></p>
+              <h5>Listado de Libros</h5>
+              <p><a class="waves-effect waves-white btn-flat white-text" href="{% url 'library:new_book' %}"> + AÑADIR UNO NUEVO</a></p>
                <ul>
                 {% for book in my_book_list %}
                 <li>
@@ -25,7 +25,7 @@
             </ul>
             </div>
             <div class="card-action">
-              <a href="{% url 'library:index' %}" class="red-text text-lighten-5">HOME</a>
+              <a href="{% url 'library:index' %}" class="red-text text-lighten-5">INICIO</a>
               <a href="#" class="red-text text-lighten-5">LOGIN</a>
             </div>
           </div>

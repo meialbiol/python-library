@@ -15,9 +15,16 @@ class BookListView(generic.ListView):
     model = Book
     context_object_name = 'my_book_list'
 
+
 class BookDetailView(generic.DetailView):
     model = Book
-    context_object_name='book'
+    context_object_name = 'book'
+
+
+class AuthorDetailView(generic.DetailView):
+    model = Author
+    context_object_name = 'author'
+
 
 def index(request):
     num_books = Book.objects.all().count()
@@ -25,12 +32,16 @@ def index(request):
     num_instances_available = BookInstance.objects.filter(status__exact='a').count()
     num_authors = Author.objects.all().count()
 
-    return render(request, 'library/index.html', context={'num_books': num_books, 'num_instances': num_instances, 'num_instances_available': num_instances_available, 'num_authors': num_authors})
+    return render(request, 'library/index.html', context={'num_books': num_books, 'num_instances': num_instances,
+                                                          'num_instances_available': num_instances_available,
+                                                          'num_authors': num_authors})
+
 
 def book_list(request):
     books = Book.objects.all()
     context = {'books': books}
     return render(request, 'library/book_list.html', context)
+
 
 def new_book(request):
     if request.method != 'POST':

@@ -11,5 +11,7 @@ urlpatterns = [
     # url('catalogue/book/<int:pk>', views.BookDetailView.as_view(), name='book_detail'),
     url(r'^new_book/$', views.new_book, name='new_book'),
     url(r'^book/edit/(?P<book_id>\d+)/$', views.edit, name='edit_book'),
+
+    url(r'^catalogue/author/(?P<pk>\d+)/$', views.AuthorDetailView.as_view(), name='author_detail'),
 ]
 

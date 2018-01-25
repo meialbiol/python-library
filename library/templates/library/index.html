@@ -14,23 +14,23 @@
         <div class="col s12 m12">
           <div class="card red lighten-2">
             <div class="card-content white-text">
-              <span class="card-title">The library</span>
+              <span class="card-title right-align">The library</span>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A fuga modi quia quos soluta vel, voluptatem. Accusantium ad eos laboriosam magni maiores provident quae quibusdam rem sed vitae. Ab, iste.</p>
                 <br>
                 <div class="row">
-                    <p>RECORDS:</p>
+                    <p>REGISTROS:</p>
                     <ul class="collection col s6" style="margin: 20px auto auto 30px">
-                        <li class="collection-item red lighten-2"><strong>Books:</strong> {{ num_books }}</li>
-                        <li class="collection-item red lighten-2"><strong>Copies:</strong> {{ num_authors }}</li>
-                        <li class="collection-item red lighten-2"><strong>Copies available:</strong> {{ num_instances_available }}</li>
-                        <li class="collection-item red lighten-2"><strong>Authors:</strong> {{ num_authors }}</li>
+                        <li class="collection-item red lighten-2"><strong>Libros:</strong> {{ num_books }}</li>
+                        <li class="collection-item red lighten-2"><strong>Copias:</strong> {{ num_authors }}</li>
+                        <li class="collection-item red lighten-2"><strong>Copias disponibles:</strong> {{ num_instances_available }}</li>
+                        <li class="collection-item red lighten-2"><strong>Autores:</strong> {{ num_authors }}</li>
                     </ul>
                 </div>
 
             </div>
             <div class="card-action">
-              <a href="{% url 'library:book_list' %}" class="red-text text-lighten-5">BOOK LIST</a>
-              <a href="#" class="red-text text-lighten-5">AUTHOR LIST</a>
+              <a href="{% url 'library:book_list' %}" class="red-text text-lighten-5">LISTADO DE LIBROS</a>
+              <a href="#" class="red-text text-lighten-5">LISTADO DE AUTORES</a>
               <a href="#" class="red-text text-lighten-5">LOGIN</a>
             </div>
           </div>

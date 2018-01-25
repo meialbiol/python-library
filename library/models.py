@@ -64,7 +64,7 @@ class Author(models.Model):
         :return:
         """
 
-        return reverse('author-detail', args=[str(self.id)])
+        return reverse('author_detail', args=[str(self.id)])
 
     def __str__(self):
 
