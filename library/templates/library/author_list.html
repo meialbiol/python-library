@@ -1,0 +1,35 @@
+{% extends "library/base.html" %}
+
+{#{% block header %}#}
+{#<h3>Book list</h3>#}
+{#    <p><a class="waves-effect waves-yellow btn-flat" href="{% url 'library:new_book' %}"> + ADD NEW BOOK</a></p>#}
+{#{% endblock header %}#}
+{% block content %}
+     <div class="card red lighten-2">
+            <div class="card-content white-text">
+              <span class="card-title right-align">The library</span>
+              <h5>Listado de Autores</h5>
+{#              <p><a class="waves-effect waves-white btn-flat white-text" href="{% url 'library:new_book' %}"> + AÑADIR UNO NUEVO</a></p>#}
+               <ul>
+                {% for author in author_list %}
+                <li>
+                    <h6>
+                        <a class="white-text" href="{% url 'library:author_detail' author.id %}" ><i class="tiny material-icons">face</i> {{ author.last_name }}, {{author.first_name}}</a> ({{ author.date_of_birth }} - {{ author.date_of_death }})
+                    </h6>
+                </li>
+                {% empty %}
+                    <li >No books have been added yet.</li>
+                {% endfor %}
+            </ul>
+            {% if is_paginated %}
+                <hr>
+                 {% include 'library/partials/pagination.html' %}
+             {% endif %}
+            </div>
+            <div class="card-action">
+              <a href="{% url 'library:index' %}" class="red-text text-lighten-5">INICIO</a>
+              <a href="#" class="red-text text-lighten-5">LOGIN</a>
+            </div>
+          </div>
+
+{% endblock content %}
