@@ -13,6 +13,7 @@ from library.models import Author
 
 class BookListView(generic.ListView):
     model = Book
+    paginate_by = 10
     context_object_name = 'my_book_list'
 
 

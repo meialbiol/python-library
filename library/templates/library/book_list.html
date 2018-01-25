@@ -19,6 +19,10 @@
 {#                        - <a class="white-text" href="{{ book.get_absolute_url }}" >{{ book.title }}</a> ({{book.author}})#}
                     </h6>
                 </li>
+                    <hr>
+                    {% if is_paginated %}
+                        {% include 'library/partials/pagination.html' %}
+                    {% endif %}
                 {% empty %}
                     <li >No books have been added yet.</li>
                 {% endfor %}
