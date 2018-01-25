@@ -1,6 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views import generic
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 from django.urls import reverse
@@ -53,7 +54,7 @@ def book_list(request):
     context = {'books': books}
     return render(request, 'library/book_list.html', context)
 
-
+@login_required
 def new_book(request):
     if request.method != 'POST':
         form = BookForm()
@@ -78,7 +79,7 @@ def show(request, book_id):
 
     return render(request, 'library/book_detail.html', context)
 
-
+@login_required
 def edit(request, book_id):
     book = Book.objects.get(id=book_id)
     if request.method != 'POST':
