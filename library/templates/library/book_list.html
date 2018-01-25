@@ -15,18 +15,17 @@
                 {% for book in my_book_list %}
                 <li>
                     <h6>
-                        - <a class="white-text" href="{% url 'library:show_book' book.id %}" >{{ book.title }}</a> ({{book.author}})
-{#                        - <a class="white-text" href="{{ book.get_absolute_url }}" >{{ book.title }}</a> ({{book.author}})#}
+                        <a class="white-text" href="{% url 'library:show_book' book.id %}" ><i class="tiny material-icons">chevron_right</i> {{ book.title }}</a> ({{book.author}})
                     </h6>
                 </li>
-                    <hr>
-                    {% if is_paginated %}
-                        {% include 'library/partials/pagination.html' %}
-                    {% endif %}
                 {% empty %}
                     <li >No books have been added yet.</li>
                 {% endfor %}
             </ul>
+            {% if is_paginated %}
+                <hr>
+                 {% include 'library/partials/pagination.html' %}
+             {% endif %}
             </div>
             <div class="card-action">
               <a href="{% url 'library:index' %}" class="red-text text-lighten-5">INICIO</a>
