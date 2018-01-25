@@ -6,12 +6,25 @@
           <div class="card red lighten-2">
             <div class="card-content white-text">
                 <span class="card-title right-align">The library</span>
-                <h5> </h5>
+                <h5> {{ author.last_name }}, {{ author.first_name }}</h5>
+                <h6>{{ author.date_of_birth  }} - {{ author.date_of_death }}</h6>
+                <hr>
+                <br>
+                <h5><i class="small material-icons">library_books</i> BOOKS:</h5>
+                <hr>
+                {% for book in author.book_set.all %}
+                      <div class="pad-15 z-depth-5">
+                         <h6>
+                            <a class="white-text" href="{% url 'library:show_book' book.id %}" ><i class="tiny material-icons">crop_square</i> {{ book.title }}</a> ({{ book.year }})
+                        </h6>
 
+                        <p>{{ book.description }}</p>
+                      </div>
+                {% endfor %}
 
             </div>
             <div class="card-action">
-                <a class="white-text" href="#">Ver listado</a>
+                <a class="white-text" href="{% url 'library:author_list' %}">Ver listado</a>
                 <a class="right white-text" href="#">Eliminar</a>
                 <a class="right white-text" href="#">Editar</a>
             </div>

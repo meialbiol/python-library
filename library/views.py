@@ -21,10 +21,12 @@ class BookDetailView(generic.DetailView):
     model = Book
     context_object_name = 'book'
 
+
 class AuthorListView(generic.ListView):
     model = Author
     paginate_by = 5
     context_object_name = 'author_list'
+
 
 class AuthorDetailView(generic.DetailView):
     model = Author
