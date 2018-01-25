@@ -14,6 +14,9 @@
                         <li class="collection-item red lighten-2"><strong>Autores:</strong> {{ num_authors }}</li>
                     </ul>
                 </div>
+                <div class="row">
+                    <p>Has visitado esta página {{ num_visits }}{% if num_visits == 1 %} vez{% else %} veces{% endif %}.</p>
+                </div>
 
             </div>
             <div class="card-action">
