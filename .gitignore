@@ -4,3 +4,8 @@ ll_env/
 */__pycache__/*
 /*/*/__pycache__/*
 db.sqlite3
+library/__pycache__/
+library/migrations/__pycache__/
+users/__pycache__/
+users/migrations/__pycache__/
+website/__pycache__/
