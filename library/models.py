@@ -1,3 +1,5 @@
+from datetime import date
+
 from django.db import models
 from django.utils import timezone
 from django.urls import reverse
@@ -45,6 +47,12 @@ class BookInstance(models.Model):
 
     def __str__(self):
         return '{0} ({1})'.format(self.id, self.book.title)
+
+    @property
+    def is_overdue(self):
+        if self.due_back and date.today() > self.due_back:
+            return True
+        return False
 
 
 class Author(models.Model):

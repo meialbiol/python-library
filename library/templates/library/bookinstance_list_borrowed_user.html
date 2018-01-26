@@ -1,0 +1,35 @@
+{% extends "library/base.html" %}
+
+{% block content %}
+
+     <div class="card red lighten-2 pad-30">
+            <div class="card-content white-text">
+              <span class="card-title right-align"><a href="{% url 'library:index' %}" class="red-text text-lighten-5">The library</a></span>
+              <h5>Mis Libros</h5>
+            {% if bookinstance_list %}
+            <ul>
+                {% for bookinst  in bookinstance_list %}
+                <li>
+                    <a href="{% url 'library:show_book' bookinst.book.pk %}" class="{% if bookinst.is_overdue %}pink-text text-darken-4{%else %} white-text{% endif %}">{{bookinst.book.title}}</a> ({{ bookinst.due_back }})
+                </li>
+                {% endfor %}
+            </ul>
+             {% else %}
+              <p>No tienes ningún libro en préstamo</p>
+            {% endif %}
+            {% if is_paginated %}
+                <hr>
+                 {% include 'library/partials/pagination.html' %}
+             {% endif %}
+            </div>
+            <div class="card-action">
+              <a href="{% url 'library:index' %}" class="red-text text-lighten-5">INICIO</a>
+               {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}?next={{request.path}}" class="red-text text-lighten-5">LOGOUT</a>
+               {% else %}
+                   <a href="{% url 'login' %}?next={{request.path}}" class="red-text text-lighten-5">LOGIN</a>
+               {% endif %}
+            </div>
+          </div>
+
+{% endblock content %}
