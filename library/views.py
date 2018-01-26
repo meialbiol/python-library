@@ -2,6 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views import generic
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 from django.urls import reverse
@@ -23,7 +24,7 @@ class BookDetailView(generic.DetailView):
     context_object_name = 'book'
 
 
-class AuthorListView(generic.ListView):
+class AuthorListView(LoginRequiredMixin, generic.ListView):
     model = Author
     paginate_by = 5
     context_object_name = 'author_list'
