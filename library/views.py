@@ -24,7 +24,7 @@ class BookDetailView(generic.DetailView):
     context_object_name = 'book'
 
 
-class AuthorListView(LoginRequiredMixin, generic.ListView):
+class AuthorListView(generic.ListView):
     model = Author
     paginate_by = 5
     context_object_name = 'author_list'
