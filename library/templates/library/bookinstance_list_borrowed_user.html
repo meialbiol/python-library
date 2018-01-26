@@ -24,9 +24,10 @@
             </div>
             <div class="card-action">
               <a href="{% url 'library:index' %}" class="red-text text-lighten-5">INICIO</a>
+
                {% if user.is_authenticated %}
-                   {% if perms.catalog.can_mark_returned %}
-                        <p>I'M A LIBRARIAN BUahahahaA!!</p>
+                     {% if perms.library.can_mark_returned %}
+                        <a href="#!" class="red-text text-lighten-5">I'M A LIBRARIAN BUahahahaA!!</a>
                    {% endif %}
                     <a href="{% url 'logout' %}?next={{request.path}}" class="red-text text-lighten-5">LOGOUT</a>
                {% else %}
