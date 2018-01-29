@@ -5,17 +5,17 @@
      <div class="card red lighten-2 pad-30">
             <div class="card-content white-text">
               <span class="card-title right-align"><a href="{% url 'library:index' %}" class="red-text text-lighten-5">The library</a></span>
-              <h5>Mis Libros</h5>
+              <h5>Libros en préstamo</h5>
             {% if bookinstance_list %}
             <ul>
                 {% for bookinst  in bookinstance_list %}
                 <li>
-                    <a href="{% url 'library:show_book' bookinst.book.pk %}" class="{% if bookinst.is_overdue %}pink-text text-darken-4{%else %} white-text{% endif %}">{{bookinst.book.title}}</a> ({{ bookinst.due_back }} - {{ bookinst.user }})
+                    <a href="{% url 'library:show_book' bookinst.book.pk %}" class="{% if bookinst.is_overdue %}pink-text text-darken-4{%else %} white-text{% endif %}">{{bookinst.book.title}}</a> ({{ bookinst.due_back }}) - {{ bookinst.borrower }}
                 </li>
                 {% endfor %}
             </ul>
              {% else %}
-              <p><i class="tiny material-icons">face</i> No tienes ningún libro en préstamo</p>
+              <p>No hay libros prestados</p>
             {% endif %}
             {% if is_paginated %}
                 <hr>
@@ -26,9 +26,6 @@
               <a href="{% url 'library:index' %}" class="red-text text-lighten-5">INICIO</a>
 
                {% if user.is_authenticated %}
-                     {% if perms.library.can_mark_returned %}
-                        <a href="#!" class="red-text text-lighten-5">I'M A LIBRARIAN BUahahahaA!!</a>
-                   {% endif %}
                     <a href="{% url 'logout' %}?next={{request.path}}" class="red-text text-lighten-5">LOGOUT</a>
                {% else %}
                    <a href="{% url 'login' %}?next={{request.path}}" class="red-text text-lighten-5">LOGIN</a>

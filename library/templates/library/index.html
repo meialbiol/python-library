@@ -23,7 +23,11 @@
               <a href="{% url 'library:book_list' %}" class="red-text text-lighten-5">LISTADO DE LIBROS</a>
               <a href="{% url 'library:author_list' %}" class="red-text text-lighten-5">LISTADO DE AUTORES</a>
                 {% if user.is_authenticated %}
-                    <a href="{% url 'library:my_borrowed' %}" class="red-text text-lighten-5">MIS LIBROS</a>
+                    {% if perms.library.can_mark_returned %}
+                        <a href="{% url 'library:loaned_books' %}" class="red-text text-lighten-5">I'M A LIBRARIAN BUahahahaA!!</a>
+                   {% else %}
+                        <a href="{% url 'library:my_borrowed' %}" class="red-text text-lighten-5">MIS LIBROS</a>
+                    {% endif %}
                     <a href="{% url 'logout' %}?next={{request.path}}" class="red-text text-lighten-5">LOGOUT</a>
                {% else %}
                    <a href="{% url 'login' %}?next={{request.path}}" class="red-text text-lighten-5">LOGIN</a>
