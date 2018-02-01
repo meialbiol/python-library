@@ -24,10 +24,10 @@ class RenewBookForm(forms.Form):
 
         # Chek date is not in the past
         if data < datetime.date.today():
-            raise ValidationError(_('Invalida date - renewal in past'))
+            raise ValidationError(('Invalida date - renewal in past'))
 
         # Check date is in range librarian allowed to change (+4 weeks).
         if data > datetime.date.today() + datetime.timedelta(weeks=4):
-            raise ValidationError(_('Invalida date - renewal more than 4 weeks ahead'))
+            raise ValidationError(('Invalida date - renewal more than 4 weeks ahead'))
 
         return data
