@@ -1,7 +1,9 @@
+import datetime
+
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import generic
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
@@ -11,6 +13,7 @@ from library.forms import BookForm
 from library.models import Book
 from library.models import BookInstance
 from library.models import Author
+from .forms import RenewBookForm
 
 
 class BookListView(generic.ListView):
@@ -59,7 +62,7 @@ def index(request):
     num_instances_available = BookInstance.objects.filter(status__exact='a').count()
     num_authors = Author.objects.all().count()
     num_visits = request.session.get('num_visits', 0)
-    request.session['num_visits'] = num_visits+1
+    request.session['num_visits'] = num_visits + 1
 
     return render(request, 'library/index.html', context={'num_books': num_books,
                                                           'num_instances': num_instances,
@@ -72,6 +75,7 @@ def book_list(request):
     books = Book.objects.all()
     context = {'books': books}
     return render(request, 'library/book_list.html', context)
+
 
 @login_required
 def new_book(request):
@@ -98,6 +102,7 @@ def show(request, book_id):
 
     return render(request, 'library/book_detail.html', context)
 
+
 @login_required
 def edit(request, book_id):
     book = Book.objects.get(id=book_id)
@@ -111,3 +116,24 @@ def edit(request, book_id):
 
     context = {'book': book, 'form': form}
     return render(request, 'library/edit.html', context)
+
+
+@permission_required('library.can_mark_returned')
+def renew_book_librarian(request, pk):
+    book_inst = get_object_or_404(BookInstance, pk=pk)
+
+    if request.method == 'POST':
+        form = RenewBookForm(request.POST)
+
+        if form.is_valid():
+            book_inst.due_back = form.cleaned_data['renewal_date']
+            book_inst.save()
+
+            return HttpResponseRedirect(reverse('library:loaned_books'))
+
+    else:
+
+        proposed_renewal_date = datetime.date.today() + datetime.timedelta(weeks=3)
+        form = RenewBookForm(initial={'renewal_date': proposed_renewal_date})
+
+    return render(request, 'library/book_renew_librarian.html', {'form': form, 'bookinst': book_inst})

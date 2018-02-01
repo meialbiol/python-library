@@ -1,0 +1,35 @@
+{% extends "library/base.html" %}
+
+{#{% block header %}#}
+{#<h3>Book list</h3>#}
+{#    <p><a class="waves-effect waves-yellow btn-flat" href="{% url 'library:new_book' %}"> + ADD NEW BOOK</a></p>#}
+{#{% endblock header %}#}
+{% block content %}
+
+     <div class="card red lighten-2 pad-30">
+            <div class="card-content white-text">
+              <span class="card-title right-align"><a href="{% url 'library:index' %}" class="red-text text-lighten-5">The library</a></span>
+              <h5>Renovar préstamo: {{ bookinst.book.title }}</h5>
+              <h6>Renovar préstamo: {{ bookinst.borrower }}</h6>
+                <p{% if bookinst.is_overdue %} class="pink-text text-darken-4"{% endif %}>Due date: {{bookinst.due_back}}</p>
+                <form action="{% url 'library:renew-book-librarian' bookinst.id %}"  method="post" class="form">
+                    {% csrf_token %}
+                    <table>
+                    {{ form }}
+                    </table>
+                    <input type="submit" value="Submit" />
+                </form>
+
+
+            </div>
+            <div class="card-action">
+              <a href="{% url 'library:index' %}" class="red-text text-lighten-5">INICIO</a>
+               {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}?next={{request.path}}" class="red-text text-lighten-5">LOGOUT</a>
+               {% else %}
+                   <a href="{% url 'login' %}?next={{request.path}}" class="red-text text-lighten-5">LOGIN</a>
+               {% endif %}
+            </div>
+          </div>
+
+{% endblock content %}
