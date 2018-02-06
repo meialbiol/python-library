@@ -7,7 +7,8 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
+from django.views.generic import CreateView, UpdateView, DeleteView
 
 from library.forms import BookForm
 from library.models import Book
@@ -54,6 +55,24 @@ class LoanedBooksListView(LoginRequiredMixin, generic.ListView):
 
     def get_queryset(self):
         return BookInstance.objects.filter(status__exact='o').order_by('due_back')
+
+
+class AuthorCreate(CreateView):
+    model = Author
+    fields = '__all__'
+    initial = {'date_of_death':'05/01/2018',}
+    success_url = reverse_lazy('library:author_list')
+
+
+class AuthorUpdate(UpdateView):
+    model = Author
+    fields = ['first_name', 'last_name', 'date_of_birth', 'date_of_death']
+    success_url = reverse_lazy('library:author_list')
+
+
+class AuthorDelete(DeleteView):
+    model = Author
+    success_url = reverse_lazy('library:author_list')
 
 
 def index(request):

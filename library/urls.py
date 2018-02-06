@@ -15,6 +15,9 @@ urlpatterns = [
 
     url(r'^catalogue/author/$', views.AuthorListView.as_view(), name='author_list'),
     url(r'^catalogue/author/(?P<pk>\d+)/$', views.AuthorDetailView.as_view(), name='author_detail'),
+    url(r'^catalogue/author/create/$', views.AuthorCreate.as_view(), name='author_create'),
+    url(r'^catalogue/(?P<pk>\d+)/update/$', views.AuthorUpdate.as_view(), name='author_update'),
+    url(r'^catalogue/(?P<pk>\d+)/delete/$', views.AuthorDelete.as_view(), name='author_delete'),
     url(r'^catalogue/mybooks/$', views.LoanedBooksByUserListView.as_view(), name='my_borrowed'),
     url(r'^catalogue/loaned/$', views.LoanedBooksListView.as_view(), name='loaned_books')
 ]
