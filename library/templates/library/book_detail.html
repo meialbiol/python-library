@@ -45,8 +45,8 @@
             </div>
             <div class="card-action">
                 <a class="white-text" href="{% url 'library:book_list' %}">Ver listado</a>
-                <a class="right white-text" href="#">Eliminar</a>
-                <a class="right white-text" href="{% url 'library:edit_book' book.id %}">Editar</a>
+                <a class="right white-text" href="{% url 'library:book_delete' book.id %}">Eliminar</a>
+                <a class="right white-text" href="{% url 'library:book_update' book.id %}">Editar</a>
             </div>
           </div>
         </div>

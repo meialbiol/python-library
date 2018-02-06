@@ -10,12 +10,13 @@
             <div class="card-content white-text">
               <span class="card-title right-align"><a href="{% url 'library:index' %}" class="red-text text-lighten-5">The library</a></span>
               <h5>Listado de Libros</h5>
-              <p><a class="waves-effect waves-white btn-flat white-text" href="{% url 'library:new_book' %}"> + AÑADIR UNO NUEVO</a></p>
+              <p><a class="waves-effect waves-white btn-flat white-text" href="{% url 'library:book_create' %}"> + AÑADIR UNO NUEVO</a></p>
                <ul>
                 {% for book in my_book_list %}
                 <li>
                     <h6>
                         <a class="white-text" href="{% url 'library:show_book' book.id %}" ><i class="tiny material-icons">chevron_right</i> {{ book.title }}</a> ({{book.author}})
+                        - <a class="white-text" href="{% url 'library:book_update' book.id %}">Editar</a> - <a class="white-text" href="{% url 'library:book_delete' book.id %}">Eliminar</a>
                     </h6>
                 </li>
                 {% empty %}

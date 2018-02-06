@@ -74,6 +74,24 @@ class AuthorDelete(DeleteView):
     model = Author
     success_url = reverse_lazy('library:author_list')
 
+class BookCreate(CreateView):
+    model = Book
+    fields = '__all__'
+    date = datetime.datetime.now()
+    initial = {'year': date.strftime('%Y')}
+    success_url = reverse_lazy('library:book_list')
+
+
+class BookUpdate(UpdateView):
+    model = Book
+    fields = ['author', 'title', 'description', 'year', 'isbn']
+    success_url = reverse_lazy('library:book_list')
+
+
+class BookDelete(DeleteView):
+    model = Book
+    success_url = reverse_lazy('library:book_list')
+
 
 def index(request):
     num_books = Book.objects.all().count()
