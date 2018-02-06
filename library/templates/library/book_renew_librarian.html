@@ -9,15 +9,20 @@
      <div class="card red lighten-2 pad-30">
             <div class="card-content white-text">
               <span class="card-title right-align"><a href="{% url 'library:index' %}" class="red-text text-lighten-5">The library</a></span>
-              <h5>Renovar préstamo: {{ bookinst.book.title }}</h5>
-              <h6>Renovar préstamo: {{ bookinst.borrower }}</h6>
-                <p{% if bookinst.is_overdue %} class="pink-text text-darken-4"{% endif %}>Due date: {{bookinst.due_back}}</p>
-                <form action="{% url 'library:renew-book-librarian' bookinst.id %}"  method="post" class="form">
+
+                <form action="{% url 'library:renew-book-librarian' bookinst.id %}"  method="post" class="form grey lighten-5 z-depth-5 pad-20 black-text">
+                    <h5>Renovar préstamo: {{ bookinst.book.title }}</h5>
+                    <h6>Renovar préstamo: {{ bookinst.borrower }}</h6>
+                    <p{% if bookinst.is_overdue %} class="pink-text text-darken-4"{% endif %}>Due date: {{bookinst.due_back}}</p>
                     {% csrf_token %}
                     <table>
                     {{ form }}
                     </table>
-                    <input type="submit" value="Submit" />
+                    <br>
+                     <div class="center">
+                        <a href="{% url 'library:loaned_books' %}" class="btn grey lighten-1 ">Cancelar</a>
+                        <input type="submit" value="Submit" class="btn red lighten-2"  />
+                    </div>
                 </form>
 
 
