@@ -75,7 +75,7 @@ class Author(models.Model):
         :return:
         """
 
-        return reverse('author_detail', args=[str(self.id)])
+        return reverse('library:author_detail', args=[str(self.id)])
 
     def __str__(self):
 
