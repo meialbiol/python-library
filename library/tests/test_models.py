@@ -27,4 +27,4 @@ class AuthorModelTest(TestCase):
     def test_get_absolute_url(self):
         author = Author.objects.get(id=1)
 
-        self.assertEquals(author.get_absolute_url(), '/catalogue/auhor/1/')
+        self.assertEquals(author.get_absolute_url(), '/catalogue/author/1/')
